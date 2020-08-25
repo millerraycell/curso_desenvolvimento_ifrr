@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity} from 'react-native';
 
 const Home = () => {
     const {navigate} = useNavigation();
@@ -10,6 +10,8 @@ const Home = () => {
     const resultado = () => {
         const valor = Number(weightInput)/(Number(heightInput)**2)
         navigate('Resultado', {imc:Math.floor(valor)})
+        onChangeHeight('')
+        onChangeWeight('')
     }
 
     const isValid = (weightInput.length > 0 && heightInput.length > 0)
@@ -23,29 +25,36 @@ const Home = () => {
 
 
             <View style={styles.main}>
-                <Text >Insira a sua altura</Text>
-                <TextInput 
-                    style = {styles.inputButton1}
+                <Text style = {styles.text}>Insira a sua altura</Text>
+                <TextInput
+                    style = {styles.inputButton}
                     keyboardType= 'number-pad'
                     value = {heightInput}
                     onChangeText={text => onChangeHeight(text)}
+                    placeholder = "Exemplo: 1.75"
                 />
                 
-                <Text>Insira o seu peso</Text>
+                <Text style = {styles.text}>Insira o seu peso</Text>
                 <TextInput 
                     style = {styles.inputButton}
                     keyboardType= 'number-pad'
                     value = {weightInput}
                     onChangeText={text => onChangeWeight(text)}
+                    placeholder ='Insira o peso em quilos'
                 />
 
-                <Button 
-                    onPress = {resultado}
-                    title = "Calcular IMC"
-                    disabled = {!isValid}
-                    style = {styles.button}/>
+                <View style = {styles.botao}>
+                    <TouchableOpacity 
+                        onPress = {resultado}
+                        title = "Calcular IMC"
+                        disabled = {!isValid}
+                        style = {styles.button}>
+                    <Text style={styles.buttonContent}>Calcular IMC</Text>
+                    </TouchableOpacity>
 
-                
+                </View>
+
+  
             </View>
 
         </View>
@@ -76,12 +85,11 @@ const styles = StyleSheet.create({
         fontSize: 50,
     },
 
-    inputButton1:{
-        textAlign:"center",
-        borderRadius:8,
-        backgroundColor:'#FFFFFF',
-        marginBottom: 10,
-    },
+    text:{
+        fontFamily: 'Roboto_500Medium',
+        fontSize: 14,
+        marginBottom : 10,
+    }, 
 
     inputButton:{
         textAlign:"center",
@@ -90,8 +98,21 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
 
+    botao :{
+        alignItems:"center"
+    },
+
     button : {
-        backgroundColor:"#FF00AA"
+        marginTop: 20,
+        backgroundColor:"#FFF",
+        borderRadius:8,
+        width:100,
+        height: 20, 
+    },
+
+
+    buttonContent : {
+        textAlign:"center"
     }
 })
 
