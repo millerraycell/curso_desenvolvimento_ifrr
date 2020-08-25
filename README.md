@@ -38,7 +38,7 @@ No seu dispositivo mobile baixe o aplicativo Expo
 $ git clone https://github.com/millerraycell/curso_desenvolvimento_ifrr.git
 
 #Insira no terminal
-$ cd IMCCalc/
+$ cd curso_desenvolvimento_ifrr/IMCCalc/
 
 #Caso não tenha no seu computador baixe o programa yarn (https://classic.yarnpkg.com/en/docs/install/)
 #Insira o comando para instalar as dependências do projeto (pode demorar)
