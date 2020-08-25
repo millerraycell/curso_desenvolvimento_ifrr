@@ -15,10 +15,9 @@ export default StyleSheet.create({
     },
 
     textHeader:{
+        marginTop : -50,
         fontFamily: 'Roboto_700Bold',
         fontSize: 32,
-        lineHeight: 37,
-        maxWidth: 180,
     },
 
     textDescription :{
@@ -29,7 +28,8 @@ export default StyleSheet.create({
     },
 
     imagemTabela:{
-        flex:1,
+        flex: 1,
+        padding: 32,
         marginTop: -350
     },
 
@@ -41,17 +41,7 @@ export default StyleSheet.create({
     },
 
     botao : {
-        alignItems: "center"
-    },  
-
-    button : {
-        backgroundColor:"#FFF",
-        borderRadius:8,
-        width: 100,
-        height: 20, 
+        marginTop: 40,
+        marginLeft: 20,
     },
-
-    buttonContent : {
-        textAlign:"center"
-    }
 })
