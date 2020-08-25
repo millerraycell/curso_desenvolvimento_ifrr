@@ -68,3 +68,6 @@ No seu navegador irá aparecer uma página como a indicado
 
 Escaneie o QR Code com a câmera do seu telefone e o aplicativo irá começar no mesmo
 
+<p align="center">
+  <img src="./IMCCalc/assets/readme/app.jpeg" alt="Página inicial">
+</p>
