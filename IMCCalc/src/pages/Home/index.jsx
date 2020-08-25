@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
-import { View, Text, TextInput, StyleSheet, Button, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, StyleSheet, ImageBackground, TouchableOpacity} from 'react-native';
+import imagem from '../../../assets/background.jpg'
+
 
 const Home = () => {
     const {navigate} = useNavigation();
@@ -19,49 +21,61 @@ const Home = () => {
     
     return(
         <View style = {styles.container}>
-            <View style = {styles.header}>
-                <Text style={styles.title}>IMC Calc</Text>
-            </View>
+            <ImageBackground
+                source = {imagem}
+                style = {styles.imagem}>
 
-
-            <View style={styles.main}>
-                <Text style = {styles.text}>Insira a sua altura</Text>
-                <TextInput
-                    style = {styles.inputButton}
-                    keyboardType= 'number-pad'
-                    value = {heightInput}
-                    onChangeText={text => onChangeHeight(text)}
-                    placeholder = "Exemplo: 1.75"
-                />
-                
-                <Text style = {styles.text}>Insira o seu peso</Text>
-                <TextInput 
-                    style = {styles.inputButton}
-                    keyboardType= 'number-pad'
-                    value = {weightInput}
-                    onChangeText={text => onChangeWeight(text)}
-                    placeholder ='Insira o peso em quilos'
-                />
-
-                <View style = {styles.botao}>
-                    <TouchableOpacity 
-                        onPress = {resultado}
-                        title = "Calcular IMC"
-                        disabled = {!isValid}
-                        style = {styles.button}>
-                    <Text style={styles.buttonContent}>Calcular IMC</Text>
-                    </TouchableOpacity>
-
+                <View style = {styles.header}>
+                    <Text style={styles.title}>IMC Calc</Text>
                 </View>
 
-  
-            </View>
 
+                <View style={styles.main}>
+                    <Text style = {styles.text}>Insira a sua altura</Text>
+                    
+                    <View style = {styles.input}>
+                        <TextInput
+                            style = {styles.inputButton}
+                            keyboardType= 'number-pad'
+                            value = {heightInput}
+                            onChangeText={text => onChangeHeight(text)}
+                            placeholder = "Exemplo: 1.75"
+                        />       
+                    </View>
+
+                    <Text style = {styles.text}>Insira o seu peso</Text>
+                    <View style = {styles.input}>
+                        <TextInput 
+                            style = {styles.inputButton}
+                            keyboardType= 'number-pad'
+                            value = {weightInput}
+                            onChangeText={text => onChangeWeight(text)}
+                            placeholder ='Insira o peso em quilos'
+                        />
+                    </View>
+
+                    <View style = {styles.botao}>
+                        <TouchableOpacity 
+                            onPress = {resultado}
+                            title = "Calcular IMC"
+                            disabled = {!isValid}
+                            style = {styles.button}>
+                        <Text style={styles.buttonContent}>Calcular IMC</Text>
+                        </TouchableOpacity>
+
+                    </View>    
+                </View>
+            </ImageBackground>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    imagem:{
+        flex: 1,
+        resizeMode: "contain",
+        justifyContent: "center"
+},
     header:{
         marginTop: 100,
         alignItems: 'center',
@@ -70,11 +84,10 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        padding: 32,
-        backgroundColor:'#9A9EC7'
     },
 
     main:{
+        padding : 32,
         flex:1,
         justifyContent: 'center',
     },
@@ -89,9 +102,14 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto_500Medium',
         fontSize: 14,
         marginBottom : 10,
-    }, 
+    },
+
+    input:{
+        alignItems:"center",
+    },  
 
     inputButton:{
+        width: 300,
         textAlign:"center",
         borderRadius:8,
         backgroundColor:'#FFFFFF',
